@@ -34,4 +34,20 @@ RSpec.describe Team do
       
     end
   end
+
+  describe '#players_by_position' do 
+    it 'can return the player(s) by the given position' do
+      team = Team.new("France")
+
+      mbappe = Player.new({name: "Kylian Mbappe", position: "forward"})
+      pogba = Player.new({name: "Paul Pogba", position: "midfielder"}) 
+
+      team.add_player(mbappe) 
+      team.add_player(pogba)     
+
+      expect(team.players_by_position("midfielder")).to eq([pogba])
+      expect(team.players_by_position("defender")).to eq([])
+      expect(players_by_position("forward")).to eq([mbappe])
+    end
+  end
 end
