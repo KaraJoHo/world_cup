@@ -1,16 +1,21 @@
 class Team 
-  attr_reader :country, :eliminated_status
+  attr_reader :country, :elimination_status, :players
 
   def initialize(country)
     @country = country
-    @eliminated_status = false
+    @elimination_status = false
+    @players = []
   end
 
   def eliminated? 
-    @eliminated_status
+    @elimination_status
   end
 
   def eliminated 
-    @eliminated_status = true
+    @elimination_status = true
+  end
+
+  def add_player(player)
+    @players << player
   end
 end
