@@ -29,6 +29,8 @@ RSpec.describe WorldCup do
 
   describe '#active_players_by_position' do 
     it 'is an active player, only when the team is not eliminated' do 
+      france = Team.new("France") 
+
       mbappe = Player.new({name: "Kylian Mbappe", position: "forward"})    
       pogba = Player.new({name: "Paul Pogba", position: "midfielder"})  
 
@@ -48,9 +50,8 @@ RSpec.describe WorldCup do
       expect(world_cup.active_players_by_position("midfielder")).to eq([pogba, modric])
 
       croatia.eliminated 
-      
-      expect(world_cup.active_players_by_position("midfielder")).to eq([pogba])
 
+      expect(world_cup.active_players_by_position("midfielder")).to eq([pogba])
     end
   end
 end
