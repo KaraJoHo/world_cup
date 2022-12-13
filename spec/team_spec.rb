@@ -47,7 +47,7 @@ RSpec.describe Team do
 
       expect(team.players_by_position("midfielder")).to eq([pogba])
       expect(team.players_by_position("defender")).to eq([])
-      expect(players_by_position("forward")).to eq([mbappe])
+      expect(team.players_by_position("forward")).to eq([mbappe])
     end
   end
 end
