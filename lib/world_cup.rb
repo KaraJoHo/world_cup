@@ -7,27 +7,16 @@ class WorldCup
   end
 
   def active_players_by_position(position)
-    @teams.map do |team|
-      if team.elimination_status == false
-        team.players_by_position(position)
-      end
-    end.flatten.compact
+    active_teams.flat_map do |team|
+      team.players_by_position(position)
+    end
   end
 
-  # def active_players_by_position(position)
-  #   @teams.map do |team|
-  #     team.players_by_position(position).select do |player| 
-  #      team.elimination_status == false
-  #     end
-  #   end
-  # end
-  #trying to figure out a better waaayyy..
-
-  #@teams.select do |team| 
-  #team.elimination_status == false
-  #team.players_by_position(position)
-  #end
-  #just returns the whole team object.
+  def active_teams
+    @teams.select do |team| 
+      team.elimination_status == false
+    end
+  end
 
   def all_players_by_position 
     players_list = {}
